@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:09:09 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:36:15 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:58:57 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ static int	ft_cointains_smaller(t_stack *stack, int numb)
 
 static void	ft_divide(t_stack *stack_a, t_stack *stack_b, int divider, int step)
 {
-	if (stack_a->size == 0)
+	if (stack_a->size == 0 || ft_is_sorted(stack_a))
 		return ;
-	while (ft_cointains_smaller(stack_a, divider))
+	while (stack_a->size > 0 && ft_cointains_smaller(stack_a, divider)
+		&& !ft_is_sorted(stack_a))
 	{
 		if (stack_a->data[stack_a->size - 1] < divider)
 		{
