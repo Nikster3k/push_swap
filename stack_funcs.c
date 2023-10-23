@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:59:29 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:12:14 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:20:39 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,4 @@ void	ft_stack_switch_all(t_stack *stack)
 		stack->data[i] = temp;
 		i++;
 	}
-}
-
-int	ft_get_min(t_stack *stack)
-{
-	int	min;
-	int	i;
-
-	if (stack->size < 2)
-		return (0);
-	i = 1;
-	min = 0;
-	while (i < stack->size)
-	{
-		if (stack->data[i] < stack->data[min])
-			min = i;
-		i++;
-	}
-	return (min);
 }

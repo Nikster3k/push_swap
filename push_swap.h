@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:52 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:14:29 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:20:58 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,13 @@ void	ft_stack_push(t_stack *lhs, t_stack *rhs, char *msg);
 
 //small_sort.c
 void	ft_sort_random(t_stack *stack_a, t_stack *stack_b);
+int		ft_is_sorted(t_stack *stack);
 
 //large_sort.c
 void	ft_sort_large(t_stack *stack_a, t_stack *stack_b);
 
-int		ft_get_min(t_stack *stack);
+//large_sort_utils.c
 int		ft_get_max(t_stack *stack);
+int		ft_get_mean(t_stack *stack);
+
 #endif //!PUSH_SWAP_H

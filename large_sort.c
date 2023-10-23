@@ -6,31 +6,13 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:09:09 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:15:25 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:36:15 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_get_max(t_stack *stack)
-{
-	int	max;
-	int	i;
-
-	if (stack->size < 2)
-		return (0);
-	i = 1;
-	max = 0;
-	while (i < stack->size)
-	{
-		if (stack->data[i] > stack->data[max])
-			max = i;
-		i++;
-	}
-	return (max);
-}
-
-void	ft_maxtotop(t_stack *stack)
+static void	ft_maxtotop(t_stack *stack)
 {
 	int	max_idx;
 	int	max;
@@ -46,7 +28,7 @@ void	ft_maxtotop(t_stack *stack)
 	}
 }
 
-void	ft_sort_a(t_stack *stack_b, t_stack *stack_a)
+static void	ft_sort_a(t_stack *stack_b, t_stack *stack_a)
 {
 	int	max_idx;
 	int	max;
@@ -75,24 +57,7 @@ void	ft_sort_a(t_stack *stack_b, t_stack *stack_a)
 	}
 }
 
-int	ft_get_mean(t_stack *stack)
-{
-	int	sum;
-	int	i;
-
-	if (stack->size == 0)
-		return (0);
-	sum = 0;
-	i = 0;
-	while (i < stack->size)
-	{
-		sum += stack->data[i];
-		i++;
-	}
-	return (sum / stack->size);
-}
-
-int	ft_cointains_smaller(t_stack *stack, int numb)
+static int	ft_cointains_smaller(t_stack *stack, int numb)
 {
 	int	i;
 
@@ -105,7 +70,7 @@ int	ft_cointains_smaller(t_stack *stack, int numb)
 	return (0);
 }
 
-void	ft_divide(t_stack *stack_a, t_stack *stack_b, int divider, int step)
+static void	ft_divide(t_stack *stack_a, t_stack *stack_b, int divider, int step)
 {
 	if (stack_a->size == 0)
 		return ;
@@ -128,8 +93,12 @@ void	ft_divide(t_stack *stack_a, t_stack *stack_b, int divider, int step)
 
 void	ft_sort_large(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_divide(stack_a, stack_b,
-		ft_get_mean(stack_a) / 2, ft_get_mean(stack_a) / 2);
+	if (stack_a->size > 250)
+		ft_divide(stack_a, stack_b,
+			ft_get_mean(stack_a) / 8, ft_get_mean(stack_a) / 8);
+	else
+		ft_divide(stack_a, stack_b,
+			ft_get_mean(stack_a) / 2, ft_get_mean(stack_a) / 2);
 	ft_maxtotop(stack_b);
 	ft_stack_push(stack_b, stack_a, "pa\n");
 	while (stack_b->size)

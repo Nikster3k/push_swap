@@ -6,11 +6,29 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:11:01 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:11:27 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:21:46 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	ft_get_min(t_stack *stack)
+{
+	int	min;
+	int	i;
+
+	if (stack->size < 2)
+		return (0);
+	i = 1;
+	min = 0;
+	while (i < stack->size)
+	{
+		if (stack->data[i] < stack->data[min])
+			min = i;
+		i++;
+	}
+	return (min);
+}
 
 int	ft_is_sorted(t_stack *stack)
 {
@@ -26,7 +44,7 @@ int	ft_is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	ft_mintotop(t_stack *stack)
+static void	ft_mintotop(t_stack *stack)
 {
 	int	min_idx;
 	int	min;

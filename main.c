@@ -6,19 +6,19 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:16:33 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:15:17 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:21:26 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_error(int errnum)
+static int	ft_error(int errnum)
 {
 	ft_printf("Error\n");
 	return (errnum);
 }
 
-int	ft_fill_stack(char *args, t_stack *stack, int size)
+static int	ft_fill_stack(char *args, t_stack *stack, int size)
 {
 	long	value;
 	int		i;
@@ -38,7 +38,7 @@ int	ft_fill_stack(char *args, t_stack *stack, int size)
 	return (SUCCESS);
 }
 
-int	ft_allocate_stacks(t_stack *stack_a, t_stack *stack_b, int size)
+static int	ft_allocate_stacks(t_stack *stack_a, t_stack *stack_b, int size)
 {
 	stack_a->data = ft_calloc(size, sizeof(int));
 	if (stack_a->data == NULL)
@@ -54,7 +54,7 @@ int	ft_allocate_stacks(t_stack *stack_a, t_stack *stack_b, int size)
 	return (SUCCESS);
 }
 
-int	ft_init_stacks(char *args, t_stack *stack_a, t_stack *stack_b, int size)
+static int	ft_init_stacks(char *args, t_stack *stack_a, t_stack *stack_b, int size)
 {
 	if (ft_allocate_stacks(stack_a, stack_b, size))
 		return (MALLOC_FAIL);
