@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:59:29 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 12:53:21 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:12:14 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,4 @@ int	ft_get_min(t_stack *stack)
 		i++;
 	}
 	return (min);
-}
-
-int	ft_get_max(t_stack *stack)
-{
-	int	max;
-	int	i;
-
-	if (stack->size < 2)
-		return (0);
-	i = 1;
-	max = 0;
-	while (i < stack->size)
-	{
-		if (stack->data[i] > stack->data[max])
-			max = i;
-		i++;
-	}
-	return (max);
 }

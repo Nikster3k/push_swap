@@ -3,7 +3,7 @@ LIBFT = printf/libftprintf.a
 COMPILER = cc
 FLAGS = -Wall -Werror -Wextra -g
 
-SRC = main.c stack_funcs.c stack_moves.c check_args.c
+SRC = main.c stack_funcs.c stack_moves.c check_args.c large_sort.c small_sort.c
 
 OBJS = $(SRC:.c=.o)
 
