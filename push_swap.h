@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:52 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/20 19:04:05 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/23 12:54:20 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void	ft_stack_rev_rotate(t_stack *stack, char *msg);
 void	ft_stack_push(t_stack *lhs, t_stack *rhs, char *msg);
 
 int		ft_get_min(t_stack *stack);
-
+int		ft_get_max(t_stack *stack);
 #endif //!PUSH_SWAP_H
