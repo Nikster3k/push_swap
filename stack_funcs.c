@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:59:29 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/23 17:20:39 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:51:35 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,18 @@ void	ft_stack_switch_all(t_stack *stack)
 		stack->data[i] = temp;
 		i++;
 	}
+}
+
+int	ft_is_sorted(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->size - 1)
+	{
+		if (stack->data[i] < stack->data[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }
