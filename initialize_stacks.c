@@ -6,15 +6,16 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:25:36 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 14:25:43 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:32:24 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_error(int errnum)
+int	ft_error(int errnum, char *freeit)
 {
-	ft_printf("Error\n");
+	free(freeit);
+	write(2, "Error\n", 6);
 	return (errnum);
 }
 
@@ -26,6 +27,10 @@ int	ft_fill_stack(char *args, t_stack *stack, int size)
 	i = 0;
 	while (i < size)
 	{
+		while (*args == ' ' && *args)
+			args++;
+		if (*args == '\0')
+			break ;
 		value = ft_atoi(args);
 		if (value > INT_MAX || value < INT_MIN)
 			return (INT_OVERFLOW);
@@ -61,17 +66,16 @@ int	ft_init_stacks(
 		return (MALLOC_FAIL);
 	if (ft_fill_stack(args, stack_a, size))
 	{
-		free(args);
 		free(stack_a->data);
 		free(stack_b->data);
-		return (ft_error(INT_OVERFLOW));
+		return (ft_error(INT_OVERFLOW, args));
 	}
 	free(args);
 	if (ft_check_dup(stack_a))
 	{
 		free(stack_a->data);
 		free(stack_b->data);
-		return (ft_error(HAS_DUPLICATE));
+		return (ft_error(HAS_DUPLICATE, NULL));
 	}
 	ft_stack_switch_all(stack_a);
 	return (SUCCESS);

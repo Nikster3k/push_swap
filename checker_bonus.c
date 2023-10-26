@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:21:19 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 16:38:22 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 13:46:14 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,13 @@ int	main(int argc, char **argv)
 	count = 0;
 	if (argc < 2)
 		return (1);
+	if (argv[1][0] == '\0')
+		return (1);
 	args = ft_join_argv(argc, argv);
 	if (args == NULL)
-		return (ft_error(MALLOC_FAIL));
+		return (ft_error(MALLOC_FAIL, NULL));
 	if (ft_check_args(args, &count))
-		return (ft_error(BAD_ARGS));
+		return (BAD_ARGS);
 	if (ft_init_stacks(args, &stack_a, &stack_b, count))
 		return (MALLOC_FAIL);
 	ft_do_moves(&stack_a, &stack_b);

@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:09:16 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/19 18:31:49 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:45:17 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ char	*ft_join_argv(int argc, char **argv)
 
 	i = 0;
 	comb = NULL;
+	if (argv[1][0] == '\0')
+		exit (EXIT_FAILURE);
 	while (++i < argc)
 	{
 		temp = ft_strjoin(comb, argv[i]);
@@ -49,22 +51,19 @@ int	ft_check_args(char *args, int *count)
 {
 	while (*args)
 	{
+		while (*args == ' ')
+			args++;
+		if (!*args)
+			return (SUCCESS);
 		if (*args == '+' || *args == '-')
 			args++;
 		if (!ft_isdigit(*args))
 			return (BAD_ARGS);
+		else
+			(*count)++;
 		while (ft_isdigit(*args))
 			args++;
-		if (*args == 32)
-		{
-			args++;
-			if (*args == '\0')
-				return (BAD_ARGS);
-			else
-				(*count)++;
-		}
 	}
-	(*count)++;
 	return (SUCCESS);
 }
 

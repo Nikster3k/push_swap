@@ -6,16 +6,25 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:16:33 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 14:58:24 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:24:31 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static	void	ft_sort(t_stack *idx_a, t_stack *stack_b)
+{
+	if (idx_a->size > 25)
+		ft_sort_large(idx_a, stack_b);
+	else
+		ft_sort_smaller(idx_a, stack_b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
+	t_stack	idx_a;
 	char	*args;
 	int		count;
 
@@ -24,16 +33,16 @@ int	main(int argc, char **argv)
 		return (1);
 	args = ft_join_argv(argc, argv);
 	if (args == NULL)
-		return (ft_error(MALLOC_FAIL));
+		return (ft_error(MALLOC_FAIL, NULL));
 	if (ft_check_args(args, &count))
-		return (ft_error(BAD_ARGS));
+		return (ft_error(BAD_ARGS, args));
 	if (ft_init_stacks(args, &stack_a, &stack_b, count))
 		return (MALLOC_FAIL);
-	if (stack_a.size > 25)
-		ft_sort_large(&stack_a, &stack_b);
-	else
-		ft_sort_random(&stack_a, &stack_b);
+	if (ft_make_idx_stack(&stack_a, &stack_b, &idx_a))
+		return (MALLOC_FAIL);
+	ft_sort(&idx_a, &stack_b);
 	free(stack_a.data);
 	free(stack_b.data);
+	free(idx_a.data);
 	return (SUCCESS);
 }

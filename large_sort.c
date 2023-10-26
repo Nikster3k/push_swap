@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:09:09 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 14:17:27 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:15:15 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_maxtotop(t_stack *stack)
 	int	max_idx;
 	int	max;
 
-	max_idx = ft_get_max(stack);
+	max_idx = ft_get_max_idx(stack);
 	max = stack->data[max_idx];
 	while (stack->data[stack->size - 1] != max)
 	{
@@ -33,11 +33,11 @@ static void	ft_sort_a(t_stack *stack_b, t_stack *stack_a)
 	int	max_idx;
 	int	max;
 
-	max_idx = ft_get_max(stack_b);
+	max_idx = ft_get_max_idx(stack_b);
 	max = stack_b->data[max_idx];
 	while (stack_b->data[stack_b->size - 1] != max)
 	{
-		if (ft_get_max(stack_a) == 0)
+		if (ft_get_max_idx(stack_a) == 0)
 		{
 			ft_stack_push(stack_b, stack_a, "pa\n");
 			ft_stack_rotate(stack_a, "ra\n");
@@ -93,20 +93,22 @@ static void	ft_divide(t_stack *stack_a, t_stack *stack_b, int divider, int step)
 
 void	ft_sort_large(t_stack *stack_a, t_stack *stack_b)
 {
+	if (ft_is_sorted(stack_a))
+		return ;
 	if (stack_a->size > 250)
 		ft_divide(stack_a, stack_b,
-			ft_get_mean(stack_a) / 8, ft_get_mean(stack_a) / 8);
+			stack_a->size / 14, stack_a->size / 14);
 	else
 		ft_divide(stack_a, stack_b,
-			ft_get_mean(stack_a) / 2, ft_get_mean(stack_a) / 2);
+			stack_a->size / 6, stack_a->size / 6);
 	ft_maxtotop(stack_b);
 	ft_stack_push(stack_b, stack_a, "pa\n");
 	while (stack_b->size)
 	{
 		ft_sort_a(stack_b, stack_a);
 		ft_stack_push(stack_b, stack_a, "pa\n");
-		while (ft_get_max(stack_a) != 0
-			&& stack_a->data[0] > stack_b->data[ft_get_max(stack_b)])
+		while (ft_get_max_idx(stack_a) != 0
+			&& stack_a->data[0] > stack_b->data[ft_get_max_idx(stack_b)])
 		{
 			ft_stack_rev_rotate(stack_a, "rra\n");
 		}

@@ -16,7 +16,7 @@ BON_OBJS = $(BON_SRCS:.c=.o)
 
 SRC = 	main.c stack_funcs.c stack_moves.c check_args.c \
 		large_sort.c large_sort_utils.c small_sort.c \
-		initialize_stacks.c \
+		initialize_stacks.c idx_stack.c\
 
 OBJS = $(SRC:.c=.o)
 

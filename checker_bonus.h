@@ -6,10 +6,9 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:56:40 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 14:57:40 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:24:07 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H

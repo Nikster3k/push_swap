@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:11:01 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 15:51:25 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:54:54 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,20 @@ static void	ft_mintotop(t_stack *stack)
 	}
 }
 
-void	ft_sort_random(t_stack *stack_a, t_stack *stack_b)
+void	ft_sort_smaller(t_stack *stack_a, t_stack *stack_b)
 {
+	if (ft_is_sorted(stack_a))
+		return ;
 	while (stack_a->size != 0 && !ft_is_sorted(stack_a))
 	{
+		if (ft_get_max_idx(stack_a) == stack_a->size - 1)
+			ft_stack_rotate(stack_a, "ra\n");
+		while (stack_a->data[ft_get_max_idx(stack_a)]
+			<= stack_a->data[stack_a->size - 1] && ft_get_max_idx(stack_a) == 0)
+			ft_stack_rotate(stack_a, "ra\n");
+		if (stack_a->size > 2 && stack_a->data[stack_a->size - 1]
+			> stack_a->data[stack_a->size - 2])
+			ft_stack_swap(stack_a, "sa\n");
 		ft_mintotop(stack_a);
 		if (ft_is_sorted(stack_a))
 			break ;
