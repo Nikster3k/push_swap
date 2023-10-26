@@ -6,38 +6,42 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:21:19 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/25 13:46:14 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:39:26 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "push_swap.h"
 
 void	ft_parse_to_move(char *move, t_stack *stack_a, t_stack *stack_b)
 {
 	int	len;
 
 	len = ft_strlen(move);
-	if (ft_strncmp(move, "sa", len) == 0)
-		ft_stack_swap(stack_a, "sa\n");
-	if (ft_strncmp(move, "sb", len) == 0 || ft_strncmp(move, "ss", len) == 0)
-		ft_stack_swap(stack_b, "sb\n");
-	if (ft_strncmp(move, "ss", len) == 0)
+	if (ft_strncmp(move, "sa\n", len) == 0)
+		ft_stack_swap(stack_a, "");
+	if (ft_strncmp(move, "sb\n", len) == 0)
+		ft_stack_swap(stack_b, "");
+	if (ft_strncmp(move, "ss\n", len) == 0)
 	{
-		ft_stack_swap(stack_a, "sa\n");
-		ft_stack_swap(stack_b, "sb\n");
+		ft_stack_swap(stack_a, "");
+		ft_stack_swap(stack_b, "");
 	}
-	if (ft_strncmp(move, "pb", len) == 0)
-		ft_stack_push(stack_a, stack_b, "pb\n");
-	if (ft_strncmp(move, "pa", len) == 0)
-		ft_stack_push(stack_b, stack_a, "pa\n");
-	if (ft_strncmp(move, "rra", len) == 0 || ft_strncmp(move, "rrr", len) == 0)
-		ft_stack_rev_rotate(stack_a, "rra\n");
-	if (ft_strncmp(move, "rrb", len) == 0 || ft_strncmp(move, "rrr", len) == 0)
-		ft_stack_rev_rotate(stack_b, "rrb\n");
-	if (ft_strncmp(move, "ra", len) == 0 || ft_strncmp(move, "rr", len) == 0)
-		ft_stack_rotate(stack_a, "ra\n");
-	if (ft_strncmp(move, "rb", len) == 0 || ft_strncmp(move, "rr", len) == 0)
-		ft_stack_rotate(stack_b, "rb\n");
+	if (ft_strncmp(move, "pb\n", len) == 0)
+		ft_stack_push(stack_a, stack_b, "");
+	if (ft_strncmp(move, "pa\n", len) == 0)
+		ft_stack_push(stack_b, stack_a, "");
+	if (ft_strncmp(move, "rra\n", len) == 0
+		|| ft_strncmp(move, "rrr\n", len) == 0)
+		ft_stack_rev_rotate(stack_a, "");
+	if (ft_strncmp(move, "rrb\n", len) == 0
+		|| ft_strncmp(move, "rrr\n", len) == 0)
+		ft_stack_rev_rotate(stack_b, "");
+	if (ft_strncmp(move, "ra\n", len) == 0
+		|| ft_strncmp(move, "rr\n", len) == 0)
+		ft_stack_rotate(stack_a, "");
+	if (ft_strncmp(move, "rb\n", len) == 0
+		|| ft_strncmp(move, "rr\n", len) == 0)
+		ft_stack_rotate(stack_b, "");
 }
 
 int	ft_do_moves(t_stack *stack_a, t_stack *stack_b)
@@ -74,18 +78,16 @@ int	main(int argc, char **argv)
 	count = 0;
 	if (argc < 2)
 		return (1);
-	if (argv[1][0] == '\0')
-		return (1);
 	args = ft_join_argv(argc, argv);
 	if (args == NULL)
 		return (ft_error(MALLOC_FAIL, NULL));
 	if (ft_check_args(args, &count))
-		return (BAD_ARGS);
+		return (ft_error(BAD_ARGS, args));
 	if (ft_init_stacks(args, &stack_a, &stack_b, count))
 		return (MALLOC_FAIL);
 	ft_do_moves(&stack_a, &stack_b);
-	ft_print_stack(&stack_a);
-	if (ft_is_sorted(&stack_a) && stack_b.size == 0)
+	//ft_print_stack(&stack_a);
+	if (stack_b.size == 0 && ft_is_sorted(&stack_a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

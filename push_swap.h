@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:52 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/26 18:23:52 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 19:30:27 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "printf/ft_printf.h"
+# include "GNL/get_next_line_bonus.h"
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -33,12 +34,6 @@ typedef struct s_stack
 	int	*data;
 	int	size;
 }	t_stack;
-
-typedef struct s_both
-{
-	t_stack	a;
-	t_stack	b;
-}	t_both;
 
 //check_args.c
 char	*ft_join_argv(int argc, char **argv);
