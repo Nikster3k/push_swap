@@ -6,11 +6,11 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:59:29 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/27 16:35:39 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:59:49 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 void	ft_stack_clear(t_stack *stack)
 {

@@ -6,11 +6,11 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 14:21:19 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/27 16:53:10 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:59:23 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
 static int	ft_check_double(char *move, t_stack *stack_a, t_stack *stack_b,
 	int len)

@@ -2,7 +2,7 @@ NAME = push_swap
 CHECKER = checker
 LIBFT = printf/libftprintf.a
 COMPILER = cc
-FLAGS = -Wall -Werror -Wextra -g
+FLAGS = -Wall -Werror -Wextra
 GNL = GNL/gnl.a
 SRC = ./src
 BONUS = $(SRC)/Bonus
@@ -61,4 +61,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re bonus
+.PHONY: clean fclean re bonus all
