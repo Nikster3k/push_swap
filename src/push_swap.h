@@ -6,15 +6,15 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:17:52 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/26 19:30:27 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/26 20:15:33 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "printf/ft_printf.h"
-# include "GNL/get_next_line_bonus.h"
+# include "../printf/ft_printf.h"
+# include "../GNL/get_next_line_bonus.h"
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648

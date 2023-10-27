@@ -4,21 +4,24 @@ LIBFT = printf/libftprintf.a
 COMPILER = cc
 FLAGS = -Wall -Werror -Wextra -g
 GNL = GNL/gnl.a
+SRC = ./src
+BONUS = $(SRC)/Bonus
 
 GNL_SRCS =	GNL/get_next_line_bonus.c GNL/get_next_line_utils_bonus.c \
 
 GNL_OBJS = $(GNL_SRCS:.c=.o)
 
-BON_SRCS = 	checker_bonus.c initialize_stacks.c check_args.c\
-			stack_funcs.c stack_moves.c\
+BON_SRCS = 	$(BONUS)/checker_bonus.c $(BONUS)/initialize_stacks_bonus.c \
+			$(BONUS)/check_args_bonus.c $(BONUS)/stack_funcs_bonus.c \
+			$(BONUS)/stack_moves_bonus.c\
 
 BON_OBJS = $(BON_SRCS:.c=.o)
 
-SRC = 	main.c stack_funcs.c stack_moves.c check_args.c \
-		large_sort.c large_sort_utils.c small_sort.c \
-		initialize_stacks.c idx_stack.c\
+MAN_SRC = 	$(SRC)/main.c $(SRC)/stack_funcs.c $(SRC)/stack_moves.c $(SRC)/check_args.c \
+			$(SRC)/large_sort.c $(SRC)/large_sort_utils.c $(SRC)/small_sort.c \
+			$(SRC)/initialize_stacks.c $(SRC)/idx_stack.c\
 
-OBJS = $(SRC:.c=.o)
+MAN_OBJS = $(MAN_SRC:.c=.o)
 
 CLR_RMV		:= \033[0m	
 RED		    := \033[1;31m
@@ -29,8 +32,8 @@ CYAN 		:= \033[1;36m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(COMPILER) $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFT) $(MAN_OBJS)
+	$(COMPILER) $(FLAGS) $(MAN_OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	(cd printf && make all)
@@ -50,7 +53,7 @@ bonus: $(CHECKER)
 
 clean:
 	(cd printf && make clean)
-	rm -f $(OBJS) $(GNL_OBJS) $(BON_OBJS)
+	rm -f $(MAN_OBJS) $(GNL_OBJS) $(BON_OBJS)
 
 fclean: clean
 	(cd printf && make fclean)

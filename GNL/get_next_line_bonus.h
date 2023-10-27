@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:18:16 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/24 15:32:17 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:28:47 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../printf/Libft/libft.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 1
 # endif //!BUFFER_SIZE
 
 int		ft_cstmstrlen(char *s);
