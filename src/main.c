@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:16:33 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/26 19:24:31 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:39:20 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 
 	count = 0;
 	if (argc < 2)
-		return (1);
+		return (0);
 	args = ft_join_argv(argc, argv);
 	if (args == NULL)
 		return (ft_error(MALLOC_FAIL, NULL));

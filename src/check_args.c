@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:09:16 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/26 16:45:17 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:39:30 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_join_argv(int argc, char **argv)
 	i = 0;
 	comb = NULL;
 	if (argv[1][0] == '\0')
-		exit (EXIT_FAILURE);
+		return (NULL);
 	while (++i < argc)
 	{
 		temp = ft_strjoin(comb, argv[i]);
