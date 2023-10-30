@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 18:09:16 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/28 15:39:30 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:01:27 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	ft_check_args(char *args, int *count)
 			(*count)++;
 		while (ft_isdigit(*args))
 			args++;
+		if (*args != ' ' && *args != '\0')
+			return (BAD_ARGS);
 	}
 	return (SUCCESS);
 }

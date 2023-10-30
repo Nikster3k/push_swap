@@ -6,7 +6,7 @@
 /*   By: nsassenb <nsassenb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:18:14 by nsassenb          #+#    #+#             */
-/*   Updated: 2023/10/06 12:03:45 by nsassenb         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:52:12 by nsassenb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ char	*get_next_line(int fd)
 			((char *)buffers[fd])[size] = 0;
 	}
 	str = read_file(fd, &buffers[fd]);
+	free(buffers[fd]);
+	buffers[fd] = NULL;
 	return (str);
 }
